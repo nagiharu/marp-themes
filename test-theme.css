@@ -1,9 +1,8 @@
-/* test-theme.css */
-@theme "test-theme"; /* <<< この行を追加！ */
-
+@theme "test-theme";
+/* これ以降に他のコメントやスタイルルールを書く */
 section {
-  background-color: fuchsia !important; /* 強制的に背景をフューシャピンクに */
+  background-color: fuchsia !important;
 }
 h1 {
-  color: yellow !important; /* 強制的にH1を黄色に */
+  color: yellow !important;
 }
