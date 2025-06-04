@@ -1,1 +1,12 @@
-@theme "test-theme";
+/* @theme test-theme; */ /* ← コメントアウトまたは削除 */
+@import "default";      /* ← この行を追加！ */
+
+/* これ以降に、あなたのカスタムスタイルを記述します */
+section {
+  background-color: fuchsia !important; /* 目立つテスト用スタイル */
+  font-size: 20px; /* defaultテーマのフォントサイズを上書きしてみる */
+}
+
+h1 {
+  color: yellow !important; /* 目立つテスト用スタイル */
+}
