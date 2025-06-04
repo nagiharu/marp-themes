@@ -1,7 +1,9 @@
 /* test-theme.css */
+@theme "test-theme"; /* <<< この行を追加！ */
+
 section {
-  background-color: lime !important; /* 強制的に背景をライム色に */
+  background-color: fuchsia !important; /* 強制的に背景をフューシャピンクに */
 }
 h1 {
-  color: red !important; /* 強制的にH1を赤色に */
+  color: yellow !important; /* 強制的にH1を黄色に */
 }
