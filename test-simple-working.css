@@ -1,0 +1,12 @@
+   /* @theme test-simple-working */
+   
+   @import "default";
+   
+   section {
+     background: red !important;
+     color: white !important;
+   }
+   
+   h1 {
+     color: yellow !important;
+   }
