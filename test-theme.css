@@ -1,8 +1,1 @@
 @theme "test-theme";
-/* これ以降に他のコメントやスタイルルールを書く */
-section {
-  background-color: fuchsia !important;
-}
-h1 {
-  color: yellow !important;
-}
