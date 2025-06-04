@@ -1,0 +1,416 @@
+/*
+ * Dentsu Custom Theme for Marp
+ * Based on PowerPoint theme: Uranus - Contents
+ */
+
+/* ==================== Base Theme Settings ==================== */
+@theme "dentsu-custom";
+
+/* Color Variables from PowerPoint Theme */
+:root {
+  --color-primary: #4FC3E9;      /* accent1 - Main Blue */
+  --color-primary-light: #AAE5F8; /* accent2 - Light Blue */
+  --color-secondary: #FFA126;     /* accent3 - Orange */
+  --color-secondary-light: #FFE7AC; /* accent4 - Light Orange */
+  --color-accent: #C81E1E;       /* accent5 - Red */
+  --color-accent-light: #FE7373; /* accent6 - Light Red */
+  --color-dark: #646464;         /* dk1 - Dark Gray */
+  --color-black: #000000;        /* dk2 - Black */
+  --color-white: #FFFFFF;        /* lt1 - White */
+  --color-bg-light: #FFFAF3;    /* lt2 - Light Cream */
+  --color-link: #0563C1;         /* hlink */
+  --color-visited: #954F72;      /* folHlink */
+}
+
+/* ==================== General Styles ==================== */
+section {
+  font-family: "Yu Gothic Medium", "游ゴシック Medium", "Yu Gothic", "游ゴシック", sans-serif;
+  font-size: 28px;
+  line-height: 1.4;
+  color: var(--color-dark);
+  background: var(--color-bg-light); /* Changed from white to light cream */
+  padding: 60px;
+  position: relative; /* For header positioning */
+}
+
+/* ==================== Section Header ==================== */
+section::before {
+  content: attr(data-section-title);
+  position: absolute;
+  top: 20px;
+  left: 60px;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--color-dark);
+  opacity: 0.7;
+}
+
+/* ==================== Headings ==================== */
+section h1 {
+  font-size: 48px;
+  font-weight: 500;
+  color: #4FC3E9; /* Explicitly set to main color */
+  margin-bottom: 30px;
+  border-bottom: 4px solid #4FC3E9; /* Explicitly set to main color */
+  padding-bottom: 15px;
+  position: relative;
+}
+
+section h1::before {
+  content: "▍";
+  color: #4FC3E9; /* Explicitly set to main color */
+  margin-right: 12px;
+  font-weight: 600;
+}
+
+section h2 {
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--color-secondary);
+  margin: 40px 0 20px 0;
+  padding-left: 20px;
+  border-left: 6px solid var(--color-secondary);
+}
+
+section h3 {
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--color-primary);
+  margin: 30px 0 15px 0;
+}
+
+/* ==================== Text Styles ==================== */
+section p {
+  margin: 15px 0;
+  color: var(--color-dark);
+}
+
+section ul, section ol {
+  margin: 20px 0;
+}
+
+section li {
+  margin: 8px 0;
+  color: var(--color-dark);
+}
+
+section ul > li::marker {
+  color: var(--color-primary);
+}
+
+section strong {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+/* ==================== Links ==================== */
+section a {
+  color: var(--color-link);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-link);
+}
+
+section a:visited {
+  color: var(--color-visited);
+  border-bottom-color: var(--color-visited);
+}
+
+section a:hover {
+  opacity: 0.8;
+}
+
+/* ==================== Cover Slide (表紙) ==================== */
+section.cover {
+  background: none; /* Remove previous gradient */
+  display: grid;
+  grid-template-columns: 60% 40%; /* Adjust ratio as needed based on image */
+  grid-template-rows: auto 1fr auto;
+  padding: 0;
+  position: relative;
+}
+
+section.cover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%; /* Match grid-template-columns first value */
+  height: 100%;
+  background-color: var(--color-primary);
+  z-index: -2;
+}
+
+section.cover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40%; /* Match grid-template-columns second value */
+  height: 100%;
+  background: linear-gradient(to bottom right, var(--color-white) 0%, var(--color-white) 50%, #E0E0E0 100%); /* White to light gray gradient for the right part */
+  z-index: -2;
+}
+
+.cover-content {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  padding: 60px;
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+section.cover h1 {
+  font-size: 60px;
+  font-weight: 500;
+  color: var(--color-white); /* White text on blue background */
+  border: none;
+  margin-bottom: 20px;
+  text-shadow: none;
+}
+
+section.cover h1::before {
+  content: "▍";
+  color: var(--color-white); /* White marker on blue background */
+  margin-right: 12px;
+  font-weight: 600;
+}
+
+section.cover .subtitle {
+  font-size: 36px; /* Adjusted from 32px */
+  color: var(--color-white);
+  margin-bottom: 30px; /* Adjusted from 60px */
+  opacity: 0.9;
+  font-weight: 400;
+}
+
+section.cover .date-footer {
+  font-size: 20px; /* New class for 'dentsu | 2025-06-03' */
+  color: var(--color-white);
+  opacity: 0.8;
+  margin-top: auto; /* Pushes to bottom of content area */
+  position: relative; /* For the line */
+  padding-bottom: 20px; /* Space for the line */
+}
+
+section.cover .date-footer::after { /* Horizontal line */
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: calc(100vw * 0.6 - 120px); /* Approximating 60% of viewport width minus padding */
+  height: 4px;
+  background-color: var(--color-white);
+  z-index: 10;
+}
+
+section.cover .slide-footer {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+  text-align: right;
+  padding: 20px 40px;
+  font-size: 14px; /* Adjusted from 18px */
+  color: var(--color-dark);
+  opacity: 0.7;
+}
+
+/* ==================== Divider Slide (中扉) ==================== */
+section.divider {
+  background: linear-gradient(to bottom right, var(--color-white) 0%, #E0E0E0 100%); /* Light gray gradient */
+  color: var(--color-dark); /* Text color to dark gray */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+section.divider h1 {
+  font-size: 48px;
+  font-weight: 500;
+  color: #4FC3E9; /* Explicitly set to main color */
+  border: 4px solid #4FC3E9; /* Explicitly set to main color */
+  padding: 25px 50px;
+  margin: 0;
+  background: none;
+  backdrop-filter: none;
+}
+
+section.divider h1::before {
+  content: "▍";
+  color: #4FC3E9; /* Explicitly set to main color */
+  margin-right: 12px;
+  font-weight: 600;
+}
+
+/* ==================== Content Slides (本文) ==================== */
+section.content {
+  background: var(--color-bg-light); /* Use light cream background */
+  position: relative;
+  padding-top: 60px; /* Adjusted for header space */
+}
+
+section.content::before { /* Top colored bar */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 50%, var(--color-secondary) 100%);
+}
+
+.section-title-body {
+  font-size: 18px; /* Smaller font size for section title */
+  font-weight: 500;
+  color: var(--color-dark);
+  margin: 0 0 5px 0; /* Margin bottom to space from slide title */
+  padding-left: 0; /* No padding/border from generic h2 */
+  border-left: none;
+}
+
+section.content h1 { /* Slide Title */
+  color: #4FC3E9; /* Explicitly set to main color */
+  font-size: 40px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  border-bottom: 4px solid #4FC3E9; /* Explicitly set to main color */
+  padding-bottom: 15px;
+}
+
+section.content h1::before {
+  content: "▍";
+  color: #4FC3E9; /* Explicitly set to main color */
+  margin-right: 12px;
+  font-weight: 600;
+}
+
+section.content h2 { /* Main Message / Sub-headings */
+  font-size: 28px; /* Adjusted from 36px */
+  font-weight: 500;
+  color: var(--color-dark); /* Changed from secondary color */
+  margin: 20px 0 15px 0; /* Adjusted margins */
+  padding-left: 0; /* Remove left padding/border from generic h2 */
+  border-left: none;
+}
+
+section.content ul > li {
+  padding-left: 10px; /* Space for custom marker if needed */
+}
+
+section.content ul > li::marker {
+  color: var(--color-primary);
+  /* CSS doesn't have a reliable way to make markers square across all browsers directly.
+     Using a pseudo-element or background image on the li would be more robust if a true square is essential.
+     For now, relying on the default marker shape with primary color. */
+  font-size: 1.2em; /* Make marker slightly larger if it helps visibility */
+}
+
+/* ==================== Special Elements ==================== */
+section .highlight-box {
+  background: var(--color-bg-light);
+  border-left: 6px solid var(--color-primary);
+  padding: 20px 30px;
+  margin: 30px 0;
+  border-radius: 0 8px 8px 0;
+}
+
+section .info-box {
+  background: var(--color-primary-light);
+  color: var(--color-dark);
+  padding: 25px;
+  border-radius: 10px;
+  margin: 25px 0;
+}
+
+section .warning-box {
+  background: var(--color-secondary-light);
+  color: var(--color-dark);
+  padding: 25px;
+  border-radius: 10px;
+  margin: 25px 0;
+  border-left: 6px solid var(--color-secondary);
+}
+
+/* ==================== Footer ==================== */
+section footer {
+  position: absolute;
+  bottom: 20px;
+  left: 60px; /* Positioned on the left side */
+  font-size: 14px;
+  color: var(--color-dark);
+  opacity: 0.7;
+}
+
+/* Auto-generated footer for all slides */
+section::after {
+  content: "Proprietary & Confidential. Dentsu Inc.";
+  position: absolute;
+  bottom: 20px;
+  left: 60px;
+  font-size: 14px;
+  color: var(--color-dark);
+  opacity: 0.7;
+}
+
+/* ==================== Page Number ==================== */
+section[data-marpit-pagination]::after {
+  content: "Proprietary & Confidential. Dentsu Inc." "                                          " attr(data-marpit-pagination);
+  position: absolute;
+  bottom: 20px;
+  left: 60px;
+  font-size: 14px;
+  color: var(--color-dark);
+  opacity: 0.7;
+}
+
+/* ==================== Code Blocks ==================== */
+section pre {
+  background: var(--color-bg-light);
+  border: 1px solid var(--color-primary-light);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+  overflow-x: auto;
+}
+
+section code {
+  background: var(--color-bg-light);
+  color: var(--color-accent);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: "Consolas", "Monaco", monospace;
+}
+
+/* ==================== Tables ==================== */
+section table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0;
+}
+
+section th {
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 15px;
+  text-align: left;
+  font-weight: 500;
+}
+
+section td {
+  padding: 12px 15px;
+  border-bottom: 1px solid var(--color-primary-light);
+}
+
+section tr:nth-child(even) {
+  background: var(--color-bg-light);
+}
+
+/* ==================== Images ==================== */
+section img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
